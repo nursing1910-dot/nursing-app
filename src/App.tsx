@@ -395,11 +395,16 @@ export default function App() {
       dir="rtl"
     >
       {!firebaseConfigured && (
-        <div className="w-full shrink-0 bg-amber-50 text-amber-950 text-sm text-center py-2.5 px-4 border-b border-amber-200 z-[100]">
-          لم يُحمّل Firebase: أنشئ ملف{" "}
-          <span className="font-mono font-bold">.env.local</span> من نموذج{" "}
-          <span className="font-mono font-bold">.env.example</span> ثم أعد تشغيل{" "}
-          <span className="font-mono">npm run dev</span>.
+        <div className="w-full shrink-0 bg-amber-50 text-amber-950 text-sm text-center py-2.5 px-4 border-b border-amber-200 z-[100] leading-relaxed max-w-[100vw]">
+          لم يُعرَف Firebase: ضع متغيرات{" "}
+          <span className="font-mono font-bold text-xs">VITE_FIREBASE_*</span> في
+          ملف{" "}
+          <span className="font-mono font-bold">.env.local</span>
+          بنسخ القالب من <span className="font-mono font-bold">.env.example</span>{" "}
+          داخل<strong> مجلّد المشروع نفسه</strong> حيث تشغّل الأمر ثم أنهِ السيرفر
+          بواسطة Ctrl+C وأعد تشغيل <span className="font-mono">npm run dev</span>.
+          تنبيه: مستودع Git لا يتضمن <span className="font-mono">.env.local</span>
+          بحكم الأمان؛ أضِفه يدويّاً على هذا الجهاز.
         </div>
       )}
       <AnimatePresence mode="wait">

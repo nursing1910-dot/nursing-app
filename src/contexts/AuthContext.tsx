@@ -79,7 +79,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
   const [status, setStatus] = useState<AuthStatus>('unknown');
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<FirestoreUserProfile | null>(null);
-  const configured = useMemo(() => isFirebaseConfigured(), []);
+  const configured = isFirebaseConfigured();
 
   useEffect(() => {
     if (!configured) {
