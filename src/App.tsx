@@ -396,15 +396,24 @@ export default function App() {
     >
       {!firebaseConfigured && (
         <div className="w-full shrink-0 bg-amber-50 text-amber-950 text-sm text-center py-2.5 px-4 border-b border-amber-200 z-[100] leading-relaxed max-w-[100vw]">
-          لم يُعرَف Firebase: ضع متغيرات{" "}
-          <span className="font-mono font-bold text-xs">VITE_FIREBASE_*</span> في
-          ملف{" "}
-          <span className="font-mono font-bold">.env.local</span>
-          بنسخ القالب من <span className="font-mono font-bold">.env.example</span>{" "}
-          داخل<strong> مجلّد المشروع نفسه</strong> حيث تشغّل الأمر ثم أنهِ السيرفر
-          بواسطة Ctrl+C وأعد تشغيل <span className="font-mono">npm run dev</span>.
-          تنبيه: مستودع Git لا يتضمن <span className="font-mono">.env.local</span>
-          بحكم الأمان؛ أضِفه يدويّاً على هذا الجهاز.
+          {import.meta.env.DEV ? (
+            <>
+              لم يُعرَف Firebase: أضِف المتغيرات{" "}
+              <span className="font-mono font-bold text-xs">VITE_FIREBASE_*</span> في{" "}
+              <span className="font-mono font-bold">.env.local</span> بالقالب{" "}
+              <span className="font-mono font-bold">.env.example</span>، ثم أوقف
+              السيرفر (Ctrl+C) وأعد <span className="font-mono">npm run dev</span>.
+            </>
+          ) : (
+            <>
+              لم يُعرَف Firebase على السيرفر: في Netlify اذهب إلى Site settings →{" "}
+              Environment variables وأضِف نفس المتغيرات التي تبدأ بـ{" "}
+              <span className="font-mono font-bold text-xs">VITE_FIREBASE_</span>
+              ثم نفّذ <strong>اضغط Deploy مرة ثانية مع Clear cache and deploy site</strong>{" "}
+              حتى يُدمَج هذا التعديل وقت البناء، لأن <span className="font-mono">.env.local</span>{" "}
+              لا يُرفع إلى الإنترنت.
+            </>
+          )}
         </div>
       )}
       <AnimatePresence mode="wait">
